@@ -12,4 +12,4 @@ const UserSchema=new Schema({
 
 },{versionKey:false});
 
-module.exports=mongoose.model("userss",UserSchema);
+module.exports=mongoose.model("user",UserSchema);

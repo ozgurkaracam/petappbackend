@@ -9,4 +9,4 @@ const PetSchema=new Schema({
     image:String,
 },{versionKey:false});
 
-module.exports = mongoose.model("petsw",PetSchema);
+module.exports = mongoose.model("pet",PetSchema);
