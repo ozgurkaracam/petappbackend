@@ -15,18 +15,27 @@ router.get('/',(req,res,next)=>{
 });
 
 router.post('/',(req,res,next)=>{
-    var cevap=new Cevap(res.body);
-    cevap.save((err,data)=>{
-        
-    });
     Cevap.insertMany(req.body,(err,data)=>{
-    
-        Soru.findByIdAndUpdate({_id:req.body.question},{'$push' : {"askes": data[0]._id}});
-        
-        if(err)
+    if(err)
             res.send(err);
-        else
+        else{
+            Soru.findByIdAndUpdate(req.body.question,{'$push':{'askes':'5da2543a426b1817a071ca43'}},(err,data)=>{
+                if(err)
+                    res.json(err);
+            });
             res.json(data);
+        }
+            
+            
+    });
+});
+
+router.post("/ss",(req,res,next)=>{
+    Soru.findByIdAndUpdate("5da2168796d22c450c50a141",{'$push':{'askes':'5da2543a426b1817a071ca43'}},(err,data)=>{
+        if(err)
+            res.json(err);
+        else
+        res.json(data);
     });
 });
 
