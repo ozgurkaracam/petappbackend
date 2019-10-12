@@ -4,7 +4,7 @@ const Schema=mongoose.Schema;
 const PetSchema=new Schema({
     ad:String,
     cins:String,
-    sahipid:Number,
+    sahipid:Schema.Types.ObjectId,
     kilo:Number,
     image:String,
 },{versionKey:false});
