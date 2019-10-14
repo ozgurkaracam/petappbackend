@@ -19,7 +19,7 @@ router.post('/',(req,res,next)=>{
     if(err)
             res.send(err);
         else{
-            Soru.findByIdAndUpdate(req.body.question,{'$push':{'askes':'5da2543a426b1817a071ca43'}},(err,data)=>{
+            Soru.findByIdAndUpdate(req.body.question,{'$push':{'askes':data._id}},(err,data)=>{
                 if(err)
                     res.json(err);
             });

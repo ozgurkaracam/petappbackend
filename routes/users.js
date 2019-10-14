@@ -21,7 +21,7 @@ router.post('/',(req,res,next)=>{
       if(err)
       res.json({"message":"Kullanıcı Adı veya Email Kullanımda.","status":0});
       else
-      res.json({"message":"Kayıt Başarılı.",status:1})
+      res.json({"message":"Kayıt Başarılı. Mailinize gönderilen aktivasyonu onaylayınız.",status:1})
   });
   
   var transporter = nodemailer.createTransport({
@@ -70,7 +70,9 @@ router.post('/login',(req,res,next)=>{
     }
     else{
       if(data[0]==null){
-        res.json({message:"Kullanıcı Adı veya şifre hatalı",
+        res.json({
+          id:data._id,
+          message:"Kullanıcı Adı veya şifre hatalı",
           status:2,
           username:null
       
@@ -78,6 +80,7 @@ router.post('/login',(req,res,next)=>{
       }
       else if(data[0].status==1){
         res.json({
+          id:data[0]._id,
           message:"Giriş Başarılı.",
           status:1,
           username:data[0].username
@@ -85,6 +88,7 @@ router.post('/login',(req,res,next)=>{
       }
       else{
         res.json({
+          id:data[0]._id,
           message:"Aktivasyon sağlayınız",
           status:2,
           username:data[0].username

@@ -22,4 +22,11 @@ router.post('/',(req,res,next)=>{
     });
 });
 
+router.get('/populate',function(req,res,next){
+    Soru.find({}).populate('askes').then(data=>{
+        res.json(data)
+    }
+    ).catch(e=>res.json(e));
+});
+
 module.exports = router;

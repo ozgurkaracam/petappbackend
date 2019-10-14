@@ -12,6 +12,17 @@ router.get('/',(req,res,next)=>{
             res.json(data);
     });
 });
+
+router.get('/:id',(req,res,next)=>{
+        Pet.find({sahipid:req.params.id},(err,data)=>{
+                if(err){
+                    res.json(err);
+                }
+                else{
+                    res.json(data)
+                }
+        })
+});
 router.delete('/',(req,res,next)=>{
     
         Pet.deleteMany({},(err,data)=>{
@@ -33,7 +44,7 @@ router.post('/',(req,res,next)=>{
     var pet=new Pet({
         ad:ad,
         cins:cins,
-        sahipid:sahipid,
+        sahipid:[sahipid],
         kilo:kilo,
         image:image
     });
