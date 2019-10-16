@@ -17,13 +17,15 @@ router.get('/',(req,res,next)=>{
 router.post('/',(req,res,next)=>{
     Cevap.insertMany(req.body,(err,data)=>{
     if(err)
-            res.send(err);
+            res.json(err);
         else{
-            Soru.findByIdAndUpdate(req.body.question,{'$push':{'askes':data._id}},(err,data)=>{
+            Soru.findByIdAndUpdate(req.body.question,{'$push':{'askes':data[0]._id}},(err,data)=>{
                 if(err)
                     res.json(err);
+                else
+                     res.json(data);
             });
-            res.json(data);
+            
         }
             
             

@@ -10,7 +10,7 @@ router.get('/',(req,res,next)=>{
             res.json({"error":"hata"});
         else
             res.json(data);
-    });
+    }).populate('askes');
 });
 
 router.post('/',(req,res,next)=>{
@@ -27,6 +27,21 @@ router.get('/populate',function(req,res,next){
         res.json(data)
     }
     ).catch(e=>res.json(e));
+});
+
+router.get('/:id',function(req,res,next){
+    Soru.find({creator:req.params.id},(err,data)=>{
+        err ? res.json(err) : res.json(data);
+    }).populate('askes');
+});
+
+router.delete('/:id',function(req,res,next){
+   Soru.findByIdAndDelete(req.params.id,(err,data)=>{
+       if(err)
+        res.json(err);
+        else
+        res.json(data);
+   });
 });
 
 module.exports = router;

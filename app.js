@@ -24,6 +24,7 @@ app.use('/users', usersRouter);
 app.use('/pets',require('./routes/pet'))
 app.use('/soru',require('./routes/soru'));
 app.use('/cevap',require('./routes/cevap'));
+app.use('/asi',require('./routes/asi'));
 
 
 // catch 404 and forward to error handler
