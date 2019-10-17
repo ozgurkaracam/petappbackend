@@ -1,4 +1,5 @@
 const mongoose=require('mongoose');
+mongoose.set('useCreateIndex', true);
 
 module.exports=()=>{
     mongoose.connect("mongodb+srv://admin:asdasd31@cluster0-lwzmp.mongodb.net/petapp?retryWrites=true&w=majority",{ useNewUrlParser: true,useUnifiedTopology:true,useFindAndModify:false });
