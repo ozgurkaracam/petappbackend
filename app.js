@@ -21,6 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/duyuru',require('./routes/duyuru'));
 app.use('/pets',require('./routes/pet'))
 app.use('/soru',require('./routes/soru'));
 app.use('/cevap',require('./routes/cevap'));
