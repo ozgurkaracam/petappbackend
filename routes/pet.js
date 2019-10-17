@@ -13,6 +13,10 @@ router.get('/',(req,res,next)=>{
     });
 });
 
+router.get('/deneme',(req,res,next)=>{
+    res.send("hahahah");
+});
+
 router.get('/:id',(req,res,next)=>{
         Pet.find({sahipid:req.params.id},(err,data)=>{
                 if(err){
