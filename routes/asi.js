@@ -61,53 +61,9 @@ router.get('/sahip/:id',(req,res,next)=>{
     }).populate('pet');
 });
 
-<<<<<<< HEAD
 router.get('/pet/:id',(req,res)=>{
     Asi.find({pet:req.params.id},(err,data)=>{
         err ? res.json(err) : res.json(data);
-=======
-router.get('/sahip/:id/gecmis',(req,res,next)=>{
-    
-    Asi.find({},(err,data)=>{
-        if(err)
-            res.json(err);
-        else{
-            var asilar=[];
-            data.forEach((item,index)=>{
-                
-                var tarih=format.parse("dd/MM/yyyy", item.tarih).getTime();
-                var bugun=Date.now();
-               if(req.params.id==item.pet.sahipid && tarih<=bugun){
-                   asilar.push(item);
-               }
-            });
-            
-            res.json(asilar);
-        }
-            
-    }).populate('pet');
-});
-
-router.get('/sahip/:id/gelecek',(req,res,next)=>{
-    
-    Asi.find({},(err,data)=>{
-        if(err)
-            res.json(err);
-        else{
-            var asilar=[];
-            data.forEach((item,index)=>{
-                
-                var tarih=format.parse("dd/MM/yyyy", item.tarih).getTime();
-                var bugun=Date.now();
-               if(req.params.id==item.pet.sahipid && tarih>bugun){
-                   asilar.push(item);
-               }
-            });
-            
-            res.json(asilar);
-        }
-            
->>>>>>> 753506ddb61062a57976772a5598a4dfbc91a18a
     }).populate('pet');
 });
 
