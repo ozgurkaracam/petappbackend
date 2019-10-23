@@ -64,7 +64,7 @@ router.get('/sahip/:id',(req,res,next)=>{
 router.get('/pet/:id',(req,res)=>{
     Asi.find({pet:req.params.id},(err,data)=>{
         err ? res.json(err) : res.json(data);
-    });
+    }).populate('pet');
 });
 
 module.exports=router;
