@@ -15,7 +15,8 @@ router.post('/',(req,res,next)=>{
     password:password,
     emailadress:emailadress,
     verification_code:verification,
-    status:0
+    status:0,
+    role:0
   });
   user.save((err,data)=>{
       if(err)
@@ -83,7 +84,8 @@ router.post('/login',(req,res,next)=>{
           id:data[0]._id,
           message:"Giriş Başarılı.",
           status:1,
-          username:data[0].username
+          username:data[0].username,
+          role:data[0].role
         });
       }
       else{

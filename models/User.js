@@ -8,7 +8,8 @@ const UserSchema=new Schema({
     password:String,
     emailadress:{type:String,unique:true,required:true,dropDups:true},
     verification_code:String,
-    status:Number
+    status:Number,
+    role:Number
 
 },{versionKey:false});
 
